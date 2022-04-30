@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+  
+  </head>
+  <body>
+  <form id="form" action="" method="get" accept-charset="utf-8">
+    
+User name <input type="text" name="" id="text" value="" />
+  <br />
+  <button onclick="return gen()">Submit</button>
+  </form>
+  <div id="div" style="display:none">
+    Hello <span id="name"></span>
+    <br />
+    Your OTP <span id="otp"></span>
+    <br />
+    Enter OTP <input type="text" name="" id="otp2" value="" />
+    <button onclick="c()">Submit</button>
+  </div>
+  <script type="text/javascript" charset="utf-8">
+    document.getElementById("form").addEventListener("click",function(event){
+      event.preventDefault();
+    })
+    function gen(){
+      var text = document.getElementById("text").value;
+      if(text===""){
+        alert("Enter Name");
+        return false;
+        
+      }
+      document.getElementById("name").innerHTML=text;
+      document.getElementById("div").style.display="block";
+      document.getElementById("form").style.display="none";
+    }
+    let num = '1234567890';
+    let otp = '';
+    for(let i=0 ;i<4 ;i++){
+      otp+=num[Math.floor(Math.random()*10)]
+    }
+    var otp3 = document.getElementById("otp").innerHTML=otp;
+    function c(){
+      var otp2 = document.getElementById("otp2").value;
+      if(otp3!=otp2){
+        document.write("Login Failed")
+      }else{
+        document.write("Login success")
+      }
+    }
+  </script>
+  </body>
+</html>
